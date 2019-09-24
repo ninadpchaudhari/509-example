@@ -1,0 +1,60 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{dirtytalk}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{automata, positioning, arrows}
+\tikzset{
+->, % makes the edges directed
+>=stealth', % makes the arrow heads bold
+node distance=3cm, % specifies the minimum distance between two nodes. Change if necessary.
+every state/.style={thick, fill=gray!10}, % sets the properties for each ’state’ node
+}
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+
+\newcommand\course{ICSI 509}
+\newcommand\NetIDa{Ninad Chaudhari}          
+\newcommand\NetIDb{NC731749}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}
+\chead{\textbf{\Large Complement of RegEx }}
+\rhead{nchaudhari@albany.edu\\ \today}
+\lfoot{\course}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+We are supposed to find a Regular Expression ($R'$)which accepts strings which do not belong to a given regular expression $R$ over certain given symbols $\Sigma$.
+\section*{Method 1}
+One way to get a complement of a given RegularExpression is by obtaining it's NFA Converting that to DFA, flipping the accepted and non-accepted states and then generating the RegEx from the this flipped DFA.
+
+Given example : \textbf{$R = (a \cup ab)^*$}
+
+\input{create-NFA.tex}
+\input{NFA-to-DFA.tex}
+\input{DFA-to-RegEx.tex}
+
+Hence the complement of given Regular Expression$R$ is $R' = a{(a \cup ba)}^* bb{(a\cup b)}^* \cup b(a \cup b )^*$
+\end{document}
