@@ -1,6 +1,6 @@
 \documentclass[12pt,letterpaper]{article}
 \usepackage{fullpage}
-\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage[top=2cm, bottom=4.5cm, left=2cm, right=2cm]{geometry}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
 \usepackage{lastpage}
 \usepackage{enumerate}
@@ -38,7 +38,7 @@ every state/.style={thick, fill=gray!10}, % sets the properties for each ’stat
 \headheight 35pt
 \lhead{\NetIDa}
 \lhead{\NetIDa\\\NetIDb}
-\chead{\textbf{\Large Complement of RegEx }}
+\chead{\textbf{\large Complementing a Regular Expression }}
 \rhead{nchaudhari@albany.edu\\ \today}
 \lfoot{\course}
 \cfoot{}
@@ -46,15 +46,18 @@ every state/.style={thick, fill=gray!10}, % sets the properties for each ’stat
 \headsep 1.5em
 
 \begin{document}
-We are supposed to find a Regular Expression ($R'$)which accepts strings which do not belong to a given regular expression $R$ over certain given symbols $\Sigma$.
-\section*{Method 1}
-One way to get a complement of a given RegularExpression is by obtaining it's NFA Converting that to DFA, flipping the accepted and non-accepted states and then generating the RegEx from the this flipped DFA.
+Let $L$ be a language specified by
+a regular expression~$r ~ = ~ (a \cup ab)^*$. The task is to find a regular expression for~$\overline{L}$, the
+complement of~$L$. The alphabet $\Sigma$ is~$\{ a, b \}$.
 
-Given example : \textbf{$R = (a \cup ab)^*$}
+\section*{Method}
+We design an NFA for~$r$, convert the NFA to a DFA, flip the accepting and
+non-accepting states to take the complement and then generate the regular expression of this
+DFA.
 
 \input{create-NFA.tex}
 \input{NFA-to-DFA.tex}
 \input{DFA-to-RegEx.tex}
 
-Hence the complement of given Regular Expression$R$ is $R' = a{(a \cup ba)}^* bb{(a\cup b)}^* \cup b(a \cup b )^*$
+Hence the regular expression for~$\overline{L}$ is $\; a{(a \cup ba)}^* bb{(a\cup b)}^* \; \cup \; b(a \cup b )^*$
 \end{document}

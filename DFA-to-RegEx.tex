@@ -1,5 +1,5 @@
 \subsection*{Obtaining the RegEx}
-From the DFA in Fig : \ref{fig:comp_dfa}, we can obtain the following Equations
+From the DFA in Fig:\ref{fig:comp_dfa}, we can obtain the following Equations
 \begin{equation}
 \label{eq:x1}
         X_1 = aX_2 \cup bX_4
@@ -16,14 +16,14 @@ From the DFA in Fig : \ref{fig:comp_dfa}, we can obtain the following Equations
 \label{eq:x4}
         X_4 = (a\cup b)X_4 \cup \varepsilon
         \end{equation}
-We need to find the $X_1$ hence resolving the equations to obtain the final $X_1$.
+We need to find the regular expression for~$X_1$.
 
 Applying Arden's lemma on equation \ref{eq:x4}, we obtain : 
 \begin{equation}
     \label{eq:x4-2}
     X_4 = {(a \cup b)} ^*
 \end{equation}
-by Arden's lemma, eq:\ref{eq:x3} and the Distributive law we can transform eq:\ref{eq:x2}:
+By Arden's lemma, eq:\ref{eq:x3} and the Distributive Law we can transform eq:\ref{eq:x2}:
 \begin{equation}
     \label{eq:x2-2}
     \begin{split}
@@ -31,7 +31,7 @@ by Arden's lemma, eq:\ref{eq:x3} and the Distributive law we can transform eq:\r
         &X_2 = {(a \cup ba)}^* bbX_4\\
     \end{split}
 \end{equation}
-Now substituting eq:\ref{eq:x4-2} and eq:\ref{eq:x2-2} in eq:\ref{eq:x1}, we obtain:
+Now substituting for $X_2$ and $X_4$ we obtain:
 \begin{equation}
-    X_1 = a{(a \cup ba)}^* bb{(a\cup b)}^* \cup b(a \cup b )^*
+    X_1 = a{(a \cup ba)}^* bb{(a\cup b)}^* \; \cup \; b(a \cup b )^*
 \end{equation}

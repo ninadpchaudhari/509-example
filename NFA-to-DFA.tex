@@ -1,18 +1,19 @@
 \subsection*{Constructing the DFA}
-Considering the NFA in fig \ref{fig:nfa} and the equation \ref{eq:closure}, we can obtain the DFA with the states as 
+We obtain the DFA by the subset construction method. The states are
 
 \begin{equation}
 \begin{split}
-    &(d_0) = \{q_0, q_1\},\\
-    &(d_1) = \{q_0, q_1, q_2\},\\
-    &(d_2) = \{q_0, q_1, q_3\}\\
-    &(d_3) = \emptyset \\
+    & d_0 = \{q_0, q_1\},\\
+    & d_1 = \{q_0, q_1, q_2\},\\
+    & d_2 = \{q_0, q_1, q_3\}\\
+    & d_3 = \emptyset \\
 \end{split}
 \end{equation}
 
-$$
-D_1 = (\{d_0, d_1, d_2, d_3\}, \{a,b\}, \delta, d_0, \{d_0, d_1, d_2\})
-$$
+\[ 
+D_1 = \big( \{d_0, d_1, d_2, d_3\}, \{a,b\}, \delta, d_0, \{d_0, d_1, d_2\} \big)
+\]
+
 where $\delta$ is defined as:
 \begin{tabular}{|l|l|l|}
 \hline
@@ -40,18 +41,20 @@ $d_3$ & $d_3$ & $d_3$ \\ \hline
             (q3) edge[loop below] node{$a,b$} (q3);
             
 \end{tikzpicture}
-\caption{DFA using subset construction - $D_1$}
+\caption{DFA $D_1$}
 \label{fig:dfa}
 \end{figure}
 
 % ----------------------------------------------------------------
 
 
-We can find the complement of the DFA drawn above \ref{fig:dfa} by flipping the accepting to non-accepting states and vice-versa to obtain Fig \ref{fig:comp_dfa}
+We can find the complement of the DFA drawn above by flipping the
+accepting to non-accepting states and vice-versa. This gives
+us the DFA in~Fig~\ref{fig:comp_dfa}
 
-$$
-D_1' = (\{d_0', d_1', d_2', d_3'\}, \{a,b\}, \delta, d_0', \{d_3'\})
-$$
+\[ 
+D_1' = \big( \{d_0', d_1', d_2', d_3'\}, \{a,b\}, \delta, d_0', \{d_3'\} \big) \]
+
 where $\delta$ is defined as:
 \begin{tabular}{|l|l|l|}
 \hline
@@ -78,6 +81,6 @@ $d_3'$ & $d_3'$ & $d_3'$ \\ \hline
             (q3) edge[loop below] node{$a,b$} (q3);
             
 \end{tikzpicture}
-\caption{Complemented DFA - $D_1'$}
+\caption{Complemented DFA $D_1'$}
 \label{fig:comp_dfa}
 \end{figure}
