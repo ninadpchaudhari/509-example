@@ -3,34 +3,34 @@ We obtain the DFA by the subset construction method. The states are
 
 \begin{equation}
 \begin{split}
-    & d_0 = \{q_0, q_1\},\\
-    & d_1 = \{q_0, q_1, q_2\},\\
-    & d_2 = \{q_0, q_1, q_3\}\\
-    & d_3 = \emptyset \\
+    & c_1 = \{q_1, q_2\},\\
+    & c_2 = \{q_1, q_2, q_3\},\\
+    & c_3 = \{q_1, q_2, q_4\}\\
+    & c_4 = \emptyset \\
 \end{split}
 \end{equation}
 
 \[ 
-D_1 = \big( \{d_0, d_1, d_2, d_3\}, \{a,b\}, \delta, d_0, \{d_0, d_1, d_2\} \big)
+D_1 = \big( \{c_1, c_2, c_3, c_4\}, \{a,b\}, \delta, c_1, \{c_1, c_2, c_3\} \big)
 \]
 
 where $\delta$ is defined as:
 \begin{tabular}{|l|l|l|}
 \hline
     & a   & b   \\ \hline
-$d_0$ & $d_1$ & $d_3$ \\
-$d_1$ & $d_1$ & $d_2$ \\
-$d_2$ & $d_1$ & $d_3$ \\
-$d_3$ & $d_3$ & $d_3$ \\ \hline
+$c_1$ & $c_2$ & $c_4$ \\
+$c_2$ & $c_2$ & $c_3$ \\
+$c_3$ & $c_2$ & $c_4$ \\
+$c_4$ & $c_4$ & $c_4$ \\ \hline
 \end{tabular}
 
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}
-    \node[state, accepting, initial] (q0) {$d_0$};
-    \node[state, accepting, right of=q0] (q1) {$d_1$};
-    \node[state, accepting, right of=q1] (q2) {$d_2$};
-    \node[state, below of=q1] (q3) {$d_3$};
+    \node[state, accepting, initial] (q0) {$c_1$};
+    \node[state, accepting, right of=q0] (q1) {$c_2$};
+    \node[state, accepting, right of=q1] (q2) {$c_3$};
+    \node[state, below of=q1] (q3) {$c_4$};
     
     \draw   (q0) edge[above] node{$a$} (q1)
             (q0) edge[below] node{$b$} (q3)
@@ -53,24 +53,24 @@ accepting to non-accepting states and vice-versa. This gives
 us the DFA in~Fig~\ref{fig:comp_dfa}
 
 \[ 
-D_1' = \big( \{d_0', d_1', d_2', d_3'\}, \{a,b\}, \delta, d_0', \{d_3'\} \big) \]
+D_2 = \big( \{d_1, d_2, d_3, d_4\}, \{a,b\}, \delta, d_1, \{d_4\} \big) \]
 
 where $\delta$ is defined as:
 \begin{tabular}{|l|l|l|}
 \hline
     & a   & b   \\ \hline
-$d_0'$ & $d_1'$ & $d_3'$ \\
-$d_1'$ & $d_1'$ & $d_2'$ \\
-$d_2'$ & $d_1'$ & $d_3'$ \\
-$d_3'$ & $d_3'$ & $d_3'$ \\ \hline
+$d_1$ & $d_2$ & $d_4$ \\
+$d_2$ & $d_2$ & $d_3$ \\
+$d_3$ & $d_2$ & $d_4$ \\
+$d_4$ & $d_4$ & $d_4$ \\ \hline
 \end{tabular}
 \begin{figure}[H] 
 \centering
 \begin{tikzpicture}
-    \node[state, initial] (q0) {$d_0'$};
-    \node[state, right of=q0] (q1) {$d_1'$};
-    \node[state, right of=q1] (q2) {$d_2'$};
-    \node[state, accepting, below of=q1] (q3) {$d_3'$};
+    \node[state, initial] (q0) {$d_1$};
+    \node[state, right of=q0] (q1) {$d_2$};
+    \node[state, right of=q1] (q2) {$d_3$};
+    \node[state, accepting, below of=q1] (q3) {$d_4$};
     
     \draw   (q0) edge[above] node{$a$} (q1)
             (q0) edge[below] node{$b$} (q3)
@@ -81,6 +81,6 @@ $d_3'$ & $d_3'$ & $d_3'$ \\ \hline
             (q3) edge[loop below] node{$a,b$} (q3);
             
 \end{tikzpicture}
-\caption{Complemented DFA $D_1'$}
+\caption{Complemented DFA $D_2$}
 \label{fig:comp_dfa}
 \end{figure}

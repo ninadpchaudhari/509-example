@@ -2,26 +2,26 @@
 An NFA for the given example is:
 
 $$
-N_1 = (\{q_0,q_1, q_2, q_3\}, \{a,b\}, \delta, q_0, \{q_0\})
+N_1 = (\{q_1,q_2, q_3, q_4\}, \{a,b\}, \delta, q_1, \{q_1\})
 $$
 where $\delta$ is defined as : 
 
 \begin{tabular}{|l|l|l|l|}
 \hline
      & $\varepsilon$ & a        & b        \\\hline
-$q_0$ & $\{q_1\}$                   &          &          \\
-$q_1$ &                            & $\{q_2\}$ &          \\
-$q_2$ & $\{q_0\}$                   &          & $\{q_3\}$ \\
-$q_3$ & $\{q_0\}$                   &          &        \\ \hline
+$q_1$ & $\{q_2\}$                   &          &          \\
+$q_2$ &                            & $\{q_3\}$ &          \\
+$q_3$ & $\{q_1\}$                   &          & $\{q_4\}$ \\
+$q_4$ & $\{q_1\}$                   &          &        \\ \hline
 \end{tabular}
 
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}
-    \node[state, accepting, initial] (q0) {$q_0$};
-    \node[state, right of=q0] (q1) {$q_1$};
-    \node[state, right of=q1] (q2) {$q_2$};
-    \node[state, right of=q2] (q3) {$q_3$};
+    \node[state, accepting, initial] (q0) {$q_1$};
+    \node[state, right of=q0] (q1) {$q_2$};
+    \node[state, right of=q1] (q2) {$q_3$};
+    \node[state, right of=q2] (q3) {$q_4$};
     
     \draw   (q0) edge[above] node{$\varepsilon$} (q1)
             (q1) edge[above] node{$a$} (q2)
@@ -34,13 +34,13 @@ $q_3$ & $\{q_0\}$                   &          &        \\ \hline
 \label{fig:nfa}
 \end{figure}
 
-Now observe the $\varepsilon$ closures of all states in fig~\ref{fig:nfa}:
+Now observe the $\mathcal{E}$ closures of all states in fig~\ref{fig:nfa}:
 \begin{equation}
 \label{eq:closure}
 \begin{split}
-&\varepsilon (q_0) = \{q_0, q_1\} \\
-&\varepsilon (q_1) = \{q_1\} \\
-&\varepsilon (q_2) = \{q_0, q_1, q_2\} \\
-&\varepsilon (q_3) = \{q_0, q_1, q_3\} \\
+&\mathcal{E} (q_1) = \{q_1, q_2\} \\
+&\mathcal{E} (q_2) = \{q_2\} \\
+&\mathcal{E} (q_3) = \{q_1, q_2, q_3\} \\
+&\mathcal{E} (q_4) = \{q_1, q_2, q_4\} \\
 \end{split}
 \end{equation}
